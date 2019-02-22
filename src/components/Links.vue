@@ -6,8 +6,11 @@
         <input type="url" v-model="newLink" placeholder="https://" required="required" />
       </form>
       <ul v-if="countLinks >= 1">
-        <li v-for="(link, index) in links" v-bind:key="index" v-on:dblclick="removeLinks">
-        	<a v-bind:href="link" target="_blank">{{ link }}</a>
+        <li v-for="(link, index) in links" v-bind:key="index" v-on:dblclick="removeLinks" title="Remove">
+          {{ link }}
+        	<a v-bind:href="link" target="_blank">
+            <i class="fa fa-external-link" title="Open"></i>
+          </a>
         </li>
       </ul>
 	</div>
@@ -84,16 +87,22 @@ ul {
   overflow-x: hidden;
   list-style: none;
 }
-ul li a {
+ul li {
  cursor: pointer;
  font-size: 1.1em;
  color: rgba(0, 0, 0, 0.5);
  text-decoration: none;
 }
-ul li a:hover {
- color: rgba(0, 0, 0, 0.8);
+ul li:hover {
  text-decoration-line: line-through; 
  text-decoration-color: red;
+}
+ul li a {
+  color: rgba(0, 0, 0, 0.5);
+  padding-left: 10px;
+}
+ul li a:hover {
+  color: rgba(0, 0, 0, 0.8);
 }
 form input {
   border: none;
